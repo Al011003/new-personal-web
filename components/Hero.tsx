@@ -9,11 +9,11 @@ const socialLinks = [
   { href: "", label: "Email", icon: "/images/icons/email.svg" },
 ];
 
-const roleIcons = [
-  "/images/icons/role-backend.svg",
-  "/images/icons/role-data-engineer.svg",
-  "/images/icons/role-analyst.svg",
-];
+const currentWork = {
+  logo: "/images/logo-lkpp.png",
+  role: "Data Engineer",
+  company: "LKPP",
+};
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -32,9 +32,6 @@ export default function Hero() {
       .forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
-
-  // Duplicate roles for infinite scroll
-  const rolesDouble = [...personal.roles, ...personal.roles, ...personal.roles];
 
   return (
     <section
@@ -70,18 +67,6 @@ export default function Hero() {
         {/* LEFT content */}
         <div className="relative z-10 h-screen flex items-center pl-16 xl:pl-24">
           <div className="w-[400px] xl:w-[440px]">
-            <div
-              className="fade-up inline-flex items-center gap-2 bg-white border border-border px-4 py-2 rounded-full text-sm text-ink2 mb-6"
-              style={{ transitionDelay: "0ms" }}
-            >
-              <img
-                src="/images/logo-lkpp.png"
-                alt="LKPP"
-                className="w-4 h-4 flex-shrink-0"
-              />
-              Data Engineer at LKPP
-            </div>
-
             <p
               className="fade-up font-display text-xl italic text-ink3 mb-1"
               style={{ transitionDelay: "80ms" }}
@@ -176,37 +161,26 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* RIGHT – role cards */}
-        <div className="absolute right-16 xl:right-24 top-1/2 -translate-y-1/2 z-10 flex flex-col gap-3">
-          {personal.roles.map((r, i) => (
-            <div
-              key={r.title}
-              className="fade-up bg-white border border-border rounded-2xl px-4 py-3 flex items-center gap-3 w-[210px] shadow-sm"
-              style={{
-                animation: `float${(i % 3) + 1} ${4 + i}s ease-in-out infinite`,
-                animationDelay: `${i * 0.4}s`,
-                transitionDelay: `${400 + i * 80}ms`,
-              }}
-            >
-              <div
-                className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: r.bg }}
-              >
-                <img
-                  src={roleIcons[i]}
-                  alt={r.title}
-                  className="w-4 h-4"
-                  style={{ filter: "brightness(0) opacity(0.55)" }}
-                />
-              </div>
-              <div>
-                <p className="text-[13px] font-medium text-ink leading-tight">
-                  {r.title}
-                </p>
-                <p className="text-[11px] text-ink3 mt-0.5">{r.sub}</p>
-              </div>
+        {/* RIGHT – current work card */}
+        <div className="absolute right-16 xl:right-24 top-1/2 -translate-y-1/2 z-10">
+          <div
+            className="fade-up bg-white border border-border rounded-2xl px-4 py-3 flex items-center gap-3 shadow-sm"
+            style={{ transitionDelay: "400ms" }}
+          >
+            <img
+              src={currentWork.logo}
+              alt={currentWork.company}
+              className="w-9 h-9 object-contain flex-shrink-0"
+            />
+            <div>
+              <p className="text-[13px] font-medium text-ink leading-tight">
+                {currentWork.role}
+              </p>
+              <p className="text-[11px] text-ink3 mt-0.5">
+                {currentWork.company}
+              </p>
             </div>
-          ))}
+          </div>
         </div>
 
         {/* Scroll indicator */}
@@ -224,18 +198,6 @@ export default function Hero() {
         <div className="flex flex-1 pt-20">
           {/* LEFT text */}
           <div className="flex-1 flex flex-col justify-center px-10 pb-8">
-            <div
-              className="fade-up inline-flex items-center gap-2 bg-white border border-border px-4 py-2 rounded-full text-sm text-ink2 mb-5 self-start"
-              style={{ transitionDelay: "0ms" }}
-            >
-              <img
-                src="/images/icons/garuda.svg"
-                alt="LKPP"
-                className="w-4 h-4 flex-shrink-0"
-              />
-              Data Engineer at LKPP
-            </div>
-
             <p
               className="fade-up font-display text-lg italic text-ink3 mb-1"
               style={{ transitionDelay: "80ms" }}
@@ -337,36 +299,20 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Role cards – infinite scroll strip */}
-        <div className="overflow-hidden py-5 border-t border-border">
-          <div className="flex gap-3 role-marquee">
-            {rolesDouble.map((r, i) => (
-              <div
-                key={i}
-                className="bg-white border border-border rounded-2xl px-4 py-3 flex items-center gap-3 flex-shrink-0 shadow-sm"
-                style={{ minWidth: "200px" }}
-              >
-                <div
-                  className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: r.bg }}
-                >
-                  <img
-                    src={roleIcons[i % roleIcons.length]}
-                    alt={r.title}
-                    className="w-4 h-4"
-                    style={{ filter: "brightness(0) opacity(0.55)" }}
-                  />
-                </div>
-                <div>
-                  <p className="text-[13px] font-medium text-ink leading-tight whitespace-nowrap">
-                    {r.title}
-                  </p>
-                  <p className="text-[11px] text-ink3 whitespace-nowrap">
-                    {r.sub}
-                  </p>
-                </div>
-              </div>
-            ))}
+        {/* Current work card */}
+        <div className="flex justify-center py-5 border-t border-border">
+          <div className="bg-white border border-border rounded-2xl px-4 py-3 flex items-center gap-3 shadow-sm">
+            <img
+              src={currentWork.logo}
+              alt={currentWork.company}
+              className="w-8 h-8 object-contain flex-shrink-0"
+            />
+            <div>
+              <p className="text-[13px] font-medium text-ink leading-tight">
+                {currentWork.role}
+              </p>
+              <p className="text-[11px] text-ink3">{currentWork.company}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -397,17 +343,6 @@ export default function Hero() {
         </div>
         {/* 1. Nama dulu */}
         <div className="px-6 pt-2 pb-4 text-center">
-          <div
-            className="fade-up inline-flex items-center gap-2 bg-white border border-border px-4 py-2 rounded-full text-sm text-ink2 mb-4"
-            style={{ transitionDelay: "0ms" }}
-          >
-            <img
-              src="/images/icons/garuda.svg"
-              alt="LKPP"
-              className="w-4 h-4 flex-shrink-0"
-            />
-            Data Engineer at LKPP
-          </div>
           <p
             className="fade-up font-display text-lg italic text-ink3 mb-1"
             style={{ transitionDelay: "60ms" }}
@@ -441,35 +376,18 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Role cards – infinite auto scroll */}
-          <div className="overflow-hidden w-full mb-5 -mx-6">
-            <div className="flex gap-3 role-marquee px-6">
-              {rolesDouble.map((r, i) => (
-                <div
-                  key={i}
-                  className="bg-white border border-border rounded-2xl px-3 py-2.5 flex items-center gap-2 flex-shrink-0 shadow-sm"
-                >
-                  <div
-                    className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: r.bg }}
-                  >
-                    <img
-                      src={roleIcons[i % roleIcons.length]}
-                      alt={r.title}
-                      className="w-4 h-4"
-                      style={{ filter: "brightness(0) opacity(0.6)" }}
-                    />
-                  </div>
-                  <div>
-                    <p className="text-[12px] font-medium text-ink leading-tight whitespace-nowrap">
-                      {r.title}
-                    </p>
-                    <p className="text-[10px] text-ink3 whitespace-nowrap">
-                      {r.sub}
-                    </p>
-                  </div>
-                </div>
-              ))}
+          {/* Current work card */}
+          <div className="bg-white border border-border rounded-2xl px-4 py-2.5 flex items-center gap-2.5 shadow-sm mb-5">
+            <img
+              src={currentWork.logo}
+              alt={currentWork.company}
+              className="w-7 h-7 object-contain flex-shrink-0"
+            />
+            <div className="text-left">
+              <p className="text-[12px] font-medium text-ink leading-tight">
+                {currentWork.role}
+              </p>
+              <p className="text-[10px] text-ink3">{currentWork.company}</p>
             </div>
           </div>
 
