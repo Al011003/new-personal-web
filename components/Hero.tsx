@@ -74,11 +74,12 @@ export default function Hero() {
               className="fade-up inline-flex items-center gap-2 bg-white border border-border px-4 py-2 rounded-full text-sm text-ink2 mb-6"
               style={{ transitionDelay: "0ms" }}
             >
-              <span
-                className="w-2 h-2 rounded-full bg-green-500 flex-shrink-0"
-                style={{ animation: "pulseDot 2s ease-in-out infinite" }}
+              <img
+                src="/images/logo-lkpp.png"
+                alt="LKPP"
+                className="w-4 h-4 flex-shrink-0"
               />
-              Open to Work
+              Data Engineer at LKPP
             </div>
 
             <p
@@ -227,11 +228,12 @@ export default function Hero() {
               className="fade-up inline-flex items-center gap-2 bg-white border border-border px-4 py-2 rounded-full text-sm text-ink2 mb-5 self-start"
               style={{ transitionDelay: "0ms" }}
             >
-              <span
-                className="w-2 h-2 rounded-full bg-green-500 flex-shrink-0"
-                style={{ animation: "pulseDot 2s ease-in-out infinite" }}
+              <img
+                src="/images/icons/garuda.svg"
+                alt="LKPP"
+                className="w-4 h-4 flex-shrink-0"
               />
-              Open to Work
+              Data Engineer at LKPP
             </div>
 
             <p
@@ -399,11 +401,12 @@ export default function Hero() {
             className="fade-up inline-flex items-center gap-2 bg-white border border-border px-4 py-2 rounded-full text-sm text-ink2 mb-4"
             style={{ transitionDelay: "0ms" }}
           >
-            <span
-              className="w-2 h-2 rounded-full bg-green-500 flex-shrink-0"
-              style={{ animation: "pulseDot 2s ease-in-out infinite" }}
+            <img
+              src="/images/icons/garuda.svg"
+              alt="LKPP"
+              className="w-4 h-4 flex-shrink-0"
             />
-            Open to Work
+            Data Engineer at LKPP
           </div>
           <p
             className="fade-up font-display text-lg italic text-ink3 mb-1"
